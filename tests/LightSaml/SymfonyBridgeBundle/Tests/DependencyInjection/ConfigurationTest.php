@@ -20,12 +20,10 @@ class ConfigurationTest extends TestCase
         $this->processConfiguration($config);
     }
 
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage The child node "own" at path "light_saml_symfony_bridge" must be configured
-     */
     public function test_does_not_allow_empty_config()
     {
+        $this->expectExceptionMessage("The child node \"own\" at path \"light_saml_symfony_bridge\" must be configured");
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
         $config = [
             'light_saml_symfony_bridge' => [
 
