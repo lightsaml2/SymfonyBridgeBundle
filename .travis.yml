@@ -16,7 +16,7 @@ before_install:
     - if [ "$TRAVIS_PHP_VERSION" == "7.4" ]; then wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar; fi
 
 install:
-    - composer require symfony/framework-bundle:${SYMFONY_VERSION}
+    - composer require symfony/framework-bundle:${SYMFONY_VERSION} symfony/dependency-injection:${SYMFONY_VERSION} symfony/yaml:${SYMFONY_VERSION}
     - composer install
 
 script:
