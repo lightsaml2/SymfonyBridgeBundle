@@ -295,7 +295,7 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
     /**
      * @dataProvider profile_provider
      */
-    public function test_loads_public_profile($id)
+    public function test_loads_profile($id)
     {
         $containerBuilder = new ContainerBuilder(new ParameterBag());
         $extension = new LightSamlSymfonyBridgeExtension();
@@ -303,8 +303,6 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
         $extension->load($config, $containerBuilder);
 
         $this->assertTrue($containerBuilder->hasAlias($id));
-        $defn = $containerBuilder->getAlias($id);
-        $this->assertTrue($defn->isPublic());
     }
 
     private function getDefaultConfig()
