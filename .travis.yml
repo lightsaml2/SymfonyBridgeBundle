@@ -1,14 +1,12 @@
 language: php
 
 php:
-    - 7.3
     - 7.4
+    - 8.0
 
 env:
-    - SYMFONY_VERSION="3.4.41"
-    - SYMFONY_VERSION="4.4.9"
-    - SYMFONY_VERSION="5.0.9"
-    - SYMFONY_VERSION="5.1.0"
+    - SYMFONY_VERSION="^4.4"
+    - SYMFONY_VERSION="^5.2"
 
 before_install:
     - composer self-update
