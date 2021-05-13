@@ -1,21 +1,24 @@
 parameters:
     lightsaml.store.request_session_prefix: main
-    lightsaml.store.request_session_sufix: saml_request_state_
+    lightsaml.store.request_session_suffix: saml_request_state_
     lightsaml.store.sso_state_session_key: samlsso
 
 services:
-    lightsaml.store.request:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    LightSaml\Store\Request\RequestStateStoreInterface:
         class: LightSaml\Store\Request\RequestStateSessionStore
         arguments:
-            - "@session"
-            - "%lightsaml.store.request_session_prefix%"
-            - "%lightsaml.store.request_session_sufix%"
+            $providerId: "%lightsaml.store.request_session_prefix%"
+            $prefix: "%lightsaml.store.request_session_suffix%"
 
-    lightsaml.store.id_state:
+    LightSaml\Store\Id\IdStoreInterface:
         class: LightSaml\Store\Id\NullIdStore
 
-    lightsaml.store.sso_state:
+    LightSaml\Store\Sso\SsoStateStoreInterface:
         class: LightSaml\Store\Sso\SsoStateSessionStore
         arguments:
-            - "@session"
-            - "%lightsaml.store.sso_state_session_key%"
+            $key: "%lightsaml.store.sso_state_session_key%"
+        public: true

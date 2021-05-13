@@ -2,6 +2,8 @@
 
 namespace LightSaml\SymfonyBridgeBundle\Tests\DependencyInjection;
 
+use LightSaml\Build\Container\BuildContainerInterface;
+use LightSaml\Provider\TimeProvider\TimeProviderInterface;
 use LightSaml\SymfonyBridgeBundle\DependencyInjection\LightSamlSymfonyBridgeExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -25,8 +27,8 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
         $config = $this->getDefaultConfig();
         $extension->load($config, $containerBuilder);
 
-        $this->assertTrue($containerBuilder->hasDefinition('lightsaml.container.build'));
-        $this->assertEquals('LightSaml\SymfonyBridgeBundle\Bridge\Container\BuildContainer', $containerBuilder->getDefinition('lightsaml.container.build')->getClass());
+        $this->assertTrue($containerBuilder->hasDefinition(BuildContainerInterface::class));
+        $this->assertEquals('LightSaml\SymfonyBridgeBundle\Bridge\Container\BuildContainer', $containerBuilder->getDefinition(BuildContainerInterface::class)->getClass());
     }
 
     public function test_set_entity_id_parameter_from_configuration()
@@ -230,7 +232,7 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
 
         $extension->load($config, $containerBuilder);
 
-        $this->assertTrue($containerBuilder->hasDefinition('lightsaml.system.time_provider'));
+        $this->assertTrue($containerBuilder->hasDefinition(TimeProviderInterface::class));
     }
 
     public function test_loads_system_event_dispatcher()
@@ -241,7 +243,7 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
 
         $extension->load($config, $containerBuilder);
 
-        $this->assertTrue($containerBuilder->hasDefinition('lightsaml.system.event_dispatcher'));
+        $this->assertTrue($containerBuilder->hasAlias('lightsaml.system.event_dispatcher'));
     }
 
     public function test_loads_system_custom_event_dispatcher()
@@ -285,9 +287,9 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
     public function profile_provider()
     {
         return [
-            ['ligthsaml.profile.metadata'],
-            ['ligthsaml.profile.login_factory'],
-            ['ligthsaml.profile.acs'],
+            ['lightsaml.profile.metadata'],
+            ['lightsaml.profile.login_factory'],
+            ['lightsaml.profile.acs'],
         ];
     }
     /**
@@ -300,8 +302,8 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
         $config = $this->getDefaultConfig();
         $extension->load($config, $containerBuilder);
 
-        $this->assertTrue($containerBuilder->hasDefinition('ligthsaml.profile.metadata'));
-        $defn = $containerBuilder->getDefinition('ligthsaml.profile.metadata');
+        $this->assertTrue($containerBuilder->hasAlias($id));
+        $defn = $containerBuilder->getAlias($id);
         $this->assertTrue($defn->isPublic());
     }
 

@@ -22,7 +22,7 @@ class ConfigurationTest extends TestCase
 
     public function test_does_not_allow_empty_config()
     {
-        $this->expectExceptionMessage("The child node \"own\" at path \"light_saml_symfony_bridge\" must be configured");
+        $this->expectExceptionMessage("The child config \"own\" under \"light_saml_symfony_bridge\" must be configured.");
         $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
         $config = [
             'light_saml_symfony_bridge' => [

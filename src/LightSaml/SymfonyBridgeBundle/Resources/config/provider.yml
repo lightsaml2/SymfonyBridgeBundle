@@ -1,9 +1,13 @@
 services:
-    lightsaml.provider.attribute_value:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    LightSaml\Provider\Attribute\AttributeValueProviderInterface:
         class: LightSaml\Provider\Attribute\FixedAttributeValueProvider
 
-    lightsaml.provider.session_info:
+    LightSaml\Provider\Session\SessionInfoProviderInterface:
         class: LightSaml\Provider\Session\FixedSessionInfoProvider
 
-    lightsaml.provider.name_id:
+    LightSaml\Provider\NameID\NameIdProviderInterface:
         class: LightSaml\Provider\NameID\FixedNameIdProvider

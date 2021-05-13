@@ -53,7 +53,7 @@ class FunctionalTest extends WebTestCase
     {
         static::createClient();
         /** @var BuildContainerInterface $buildContainer */
-        $buildContainer = static::$kernel->getContainer()->get('lightsaml.container.build');
+        $buildContainer = static::$kernel->getContainer()->get(BuildContainerInterface::class);
         $this->assertInstanceOf(BuildContainerInterface::class, $buildContainer);
         $this->assertInstanceOf(SystemContainerInterface::class, $buildContainer->getSystemContainer());
         $this->assertInstanceOf(OwnContainerInterface::class, $buildContainer->getOwnContainer());
@@ -64,7 +64,7 @@ class FunctionalTest extends WebTestCase
     public function test_system_container() {
         static::createClient();
         /** @var BuildContainerInterface $buildContainer */
-        $buildContainer = static::$kernel->getContainer()->get('lightsaml.container.build');
+        $buildContainer = static::$kernel->getContainer()->get(BuildContainerInterface::class);
         $systemContainer = $buildContainer->getSystemContainer();
         $this->assertInstanceOf(EventDispatcherInterface::class, $systemContainer->getEventDispatcher());
         $this->assertInstanceOf(LoggerInterface::class, $systemContainer->getLogger());
@@ -75,7 +75,7 @@ class FunctionalTest extends WebTestCase
     {
         static::createClient();
         /** @var BuildContainerInterface $buildContainer */
-        $buildContainer = static::$kernel->getContainer()->get('lightsaml.container.build');
+        $buildContainer = static::$kernel->getContainer()->get(BuildContainerInterface::class);
         $partyContainer = $buildContainer->getPartyContainer();
         $this->assertInstanceOf(EntityDescriptorStoreInterface::class, $partyContainer->getIdpEntityDescriptorStore());
         $this->assertInstanceOf(EntityDescriptorStoreInterface::class, $partyContainer->getSpEntityDescriptorStore());
@@ -86,7 +86,7 @@ class FunctionalTest extends WebTestCase
     {
         static::createClient();
         /** @var BuildContainerInterface $buildContainer */
-        $buildContainer = static::$kernel->getContainer()->get('lightsaml.container.build');
+        $buildContainer = static::$kernel->getContainer()->get(BuildContainerInterface::class);
         $storeContainer = $buildContainer->getStoreContainer();
         $this->assertInstanceOf(RequestStateStoreInterface::class, $storeContainer->getRequestStateStore());
         $this->assertInstanceOf(IdStoreInterface::class, $storeContainer->getIdStateStore());
@@ -97,7 +97,7 @@ class FunctionalTest extends WebTestCase
     {
         static::createClient();
         /** @var BuildContainerInterface $buildContainer */
-        $buildContainer = static::$kernel->getContainer()->get('lightsaml.container.build');
+        $buildContainer = static::$kernel->getContainer()->get(BuildContainerInterface::class);
         $providerContainer = $buildContainer->getProviderContainer();
         $this->assertInstanceOf(AttributeValueProviderInterface::class, $providerContainer->getAttributeValueProvider());
         $this->assertInstanceOf(SessionInfoProviderInterface::class, $providerContainer->getSessionInfoProvider());
@@ -108,7 +108,7 @@ class FunctionalTest extends WebTestCase
     {
         static::createClient();
         /** @var BuildContainerInterface $buildContainer */
-        $buildContainer = static::$kernel->getContainer()->get('lightsaml.container.build');
+        $buildContainer = static::$kernel->getContainer()->get(BuildContainerInterface::class);
         $credentialContainer = $buildContainer->getCredentialContainer();
         $this->assertInstanceOf(CredentialStoreInterface::class, $credentialContainer->getCredentialStore());
     }
@@ -117,7 +117,7 @@ class FunctionalTest extends WebTestCase
     {
         static::createClient();
         /** @var BuildContainerInterface $buildContainer */
-        $buildContainer = static::$kernel->getContainer()->get('lightsaml.container.build');
+        $buildContainer = static::$kernel->getContainer()->get(BuildContainerInterface::class);
         $serviceContainer = $buildContainer->getServiceContainer();
         $this->assertInstanceOf(AssertionValidatorInterface::class, $serviceContainer->getAssertionValidator());
         $this->assertInstanceOf(AssertionTimeValidatorInterface::class, $serviceContainer->getAssertionTimeValidator());
@@ -135,7 +135,7 @@ class FunctionalTest extends WebTestCase
     {
         static::createClient();
         /** @var BuildContainerInterface $buildContainer */
-        $buildContainer = static::$kernel->getContainer()->get('lightsaml.container.build');
+        $buildContainer = static::$kernel->getContainer()->get(BuildContainerInterface::class);
         $ownContainer = $buildContainer->getOwnContainer();
         $this->assertInstanceOf(EntityDescriptorProviderInterface::class, $ownContainer->getOwnEntityDescriptorProvider());
         $this->assertIsArray($ownContainer->getOwnCredentials());

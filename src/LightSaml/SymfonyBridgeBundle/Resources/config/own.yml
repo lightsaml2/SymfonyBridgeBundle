@@ -3,6 +3,10 @@ parameters:
     lightsaml.route.login_check: lightsaml.login_check
 
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
     lightsaml.own.credential_store:
         class: LightSaml\Store\Credential\CompositeCredentialStore
 

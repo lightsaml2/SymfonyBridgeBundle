@@ -1,12 +1,10 @@
-parameters:
-    # lightsaml.system.xxx: 123
-
 services:
-    lightsaml.system.time_provider:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    LightSaml\Provider\TimeProvider\TimeProviderInterface:
         class: LightSaml\Provider\TimeProvider\SystemTimeProvider
 
-    lightsaml.system.event_dispatcher:
-        class: Symfony\Component\EventDispatcher\EventDispatcher
-
-    lightsaml.system.logger:
-        class: Psr\Log\NullLogger
+    lightsaml.system.event_dispatcher: '@event_dispatcher'
+    lightsaml.system.logger: '@logger'

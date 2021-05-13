@@ -1,18 +1,19 @@
 services:
-    ligthsaml.profile.metadata:
-        class: LightSaml\Builder\Profile\Metadata\MetadataProfileBuilder
-        public: true
-        arguments:
-            - "@lightsaml.container.build"
+    _defaults:
+        autowire: true
+        autoconfigure: true
 
-    ligthsaml.profile.login_factory:
-        class: LightSaml\Builder\Profile\WebBrowserSso\Sp\SsoSpSendAuthnRequestProfileBuilderFactory
-        public: true
-        arguments:
-            - "@lightsaml.container.build"
+    LightSaml\Builder\Profile\Metadata\MetadataProfileBuilder: ~
 
-    ligthsaml.profile.acs:
-        class: LightSaml\Builder\Profile\WebBrowserSso\Sp\SsoSpReceiveResponseProfileBuilder
-        public: true
-        arguments:
-            - "@lightsaml.container.build"
+    lightsaml.profile.metadata:
+        alias: LightSaml\Builder\Profile\Metadata\MetadataProfileBuilder
+
+    LightSaml\Builder\Profile\WebBrowserSso\Sp\SsoSpSendAuthnRequestProfileBuilderFactory: ~
+
+    lightsaml.profile.login_factory:
+        alias: LightSaml\Builder\Profile\WebBrowserSso\Sp\SsoSpSendAuthnRequestProfileBuilderFactory
+
+    LightSaml\Builder\Profile\WebBrowserSso\Sp\SsoSpReceiveResponseProfileBuilder: ~
+
+    lightsaml.profile.acs:
+        alias: LightSaml\Builder\Profile\WebBrowserSso\Sp\SsoSpReceiveResponseProfileBuilder
