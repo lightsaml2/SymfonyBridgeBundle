@@ -19,11 +19,9 @@ use Symfony\Component\Routing\RouterInterface;
 class OwnEntityDescriptorProviderFactory
 {
     /**
-     * @param string                   $ownEntityId
-     * @param RouterInterface          $router
-     * @param string                   $acsRouteName
-     * @param string                   $ssoRouteName
-     * @param CredentialStoreInterface $ownCredentialStore
+     * @param string $ownEntityId
+     * @param string $acsRouteName
+     * @param string $ssoRouteName
      *
      * @return SimpleEntityDescriptorBuilder
      */

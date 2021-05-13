@@ -36,13 +36,6 @@ class SystemContainer implements SystemContainerInterface
     /** @var LoggerInterface */
     private $logger;
 
-    /**
-     * @param RequestStack             $requestStack
-     * @param SessionInterface         $session
-     * @param TimeProviderInterface    $timeProvider
-     * @param EventDispatcherInterface $eventDispatcher
-     * @param LoggerInterface          $logger
-     */
     public function __construct(
         RequestStack $requestStack,
         SessionInterface $session,

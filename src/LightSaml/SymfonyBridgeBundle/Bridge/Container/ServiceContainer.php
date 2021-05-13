@@ -51,17 +51,6 @@ class ServiceContainer implements ServiceContainerInterface
     /** @var SessionProcessorInterface */
     private $sessionProcessor;
 
-    /**
-     * @param AssertionValidatorInterface     $assertionValidator
-     * @param AssertionTimeValidatorInterface $assertionTimeValidator
-     * @param SignatureResolverInterface      $signatureResolver
-     * @param EndpointResolverInterface       $endpointResolver
-     * @param NameIdValidatorInterface        $nameIdValidator
-     * @param BindingFactoryInterface         $bindingFactory
-     * @param SignatureValidatorInterface     $signatureValidator
-     * @param CredentialResolverInterface     $credentialResolver
-     * @param SessionProcessorInterface       $sessionProcessor
-     */
     public function __construct(
         AssertionValidatorInterface $assertionValidator,
         AssertionTimeValidatorInterface $assertionTimeValidator,

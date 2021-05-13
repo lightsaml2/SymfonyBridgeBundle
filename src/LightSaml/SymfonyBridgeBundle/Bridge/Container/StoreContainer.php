@@ -27,11 +27,6 @@ class StoreContainer implements StoreContainerInterface
     /** @var SsoStateStoreInterface */
     private $ssoStateStore;
 
-    /**
-     * @param RequestStateStoreInterface $requestStateStore
-     * @param IdStoreInterface           $idStateStore
-     * @param SsoStateStoreInterface     $ssoStateStore
-     */
     public function __construct(
         RequestStateStoreInterface $requestStateStore,
         IdStoreInterface $idStateStore,

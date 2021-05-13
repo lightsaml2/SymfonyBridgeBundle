@@ -11,14 +11,14 @@
 
 namespace LightSaml\SymfonyBridgeBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ChildDefinition;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
+use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader;
 
 class LightSamlSymfonyBridgeExtension extends Extension
 {
@@ -188,9 +188,8 @@ class LightSamlSymfonyBridgeExtension extends Extension
     }
 
     /**
-     * @param Definition $definition
-     * @param string     $classOrReference
-     * @param string     $method
+     * @param string $classOrReference
+     * @param string $method
      */
     private function setFactoryCompatibleWay(Definition $definition, $classOrReference, $method)
     {

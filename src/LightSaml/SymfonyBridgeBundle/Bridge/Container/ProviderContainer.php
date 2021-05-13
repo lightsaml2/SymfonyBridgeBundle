@@ -27,11 +27,6 @@ class ProviderContainer implements ProviderContainerInterface
     /** @var NameIdProviderInterface */
     private $nameIdProvider;
 
-    /**
-     * @param AttributeValueProviderInterface $attributeValueProvider
-     * @param SessionInfoProviderInterface    $sessionInfoProvider
-     * @param NameIdProviderInterface         $nameIdProvider
-     */
     public function __construct(
         AttributeValueProviderInterface $attributeValueProvider,
         SessionInfoProviderInterface $sessionInfoProvider,

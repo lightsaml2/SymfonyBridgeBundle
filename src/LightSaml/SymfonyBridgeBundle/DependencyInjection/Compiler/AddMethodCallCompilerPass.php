@@ -62,9 +62,6 @@ class AddMethodCallCompilerPass implements CompilerPassInterface
         return $this->methodName;
     }
 
-    /**
-     * @param ContainerBuilder $container
-     */
     public function process(ContainerBuilder $container)
     {
         if (false === $container->has($this->serviceId)) {

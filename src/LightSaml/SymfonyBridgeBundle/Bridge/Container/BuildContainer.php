@@ -43,15 +43,6 @@ class BuildContainer implements BuildContainerInterface
     /** @var CredentialContainerInterface */
     private $credentialContainer;
 
-    /**
-     * @param SystemContainerInterface     $systemContainer
-     * @param PartyContainerInterface      $partyContainer
-     * @param StoreContainerInterface      $storeContainer
-     * @param ProviderContainerInterface   $providerContainer
-     * @param CredentialContainerInterface $credentialContainer
-     * @param ServiceContainerInterface    $serviceContainer
-     * @param OwnContainerInterface        $ownContainer
-     */
     public function __construct(
         SystemContainerInterface $systemContainer,
         PartyContainerInterface $partyContainer,

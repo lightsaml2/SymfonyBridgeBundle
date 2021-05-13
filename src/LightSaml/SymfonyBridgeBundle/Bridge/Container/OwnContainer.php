@@ -28,9 +28,7 @@ class OwnContainer implements OwnContainerInterface
     private $entityId;
 
     /**
-     * @param EntityDescriptorProviderInterface $entityDescriptorProvider
-     * @param CredentialStoreInterface          $credentialStore
-     * @param string                            $entityId
+     * @param string $entityId
      */
     public function __construct(
         EntityDescriptorProviderInterface $entityDescriptorProvider,

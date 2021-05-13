@@ -26,11 +26,6 @@ class PartyContainer implements PartyContainerInterface
     /** @var TrustOptionsStoreInterface */
     private $trustOptionsStore;
 
-    /**
-     * @param EntityDescriptorStoreInterface $idpEntityDescriptorStore
-     * @param EntityDescriptorStoreInterface $spEntityDescriptorStore
-     * @param TrustOptionsStoreInterface     $trustOptionsStore
-     */
     public function __construct(
         EntityDescriptorStoreInterface $idpEntityDescriptorStore,
         EntityDescriptorStoreInterface $spEntityDescriptorStore,

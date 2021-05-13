@@ -19,11 +19,8 @@ use LightSaml\Store\EntityDescriptor\EntityDescriptorStoreInterface;
 class CredentialStoreFactory
 {
     /**
-     * @param EntityDescriptorStoreInterface $idpEntityDescriptorStore
-     * @param EntityDescriptorStoreInterface $spEntityDescriptorStore
-     * @param string                         $ownEntityId
-     * @param CredentialStoreInterface       $ownCredentialStore
-     * @param CredentialInterface[]          $extraCredentials
+     * @param string                $ownEntityId
+     * @param CredentialInterface[] $extraCredentials
      *
      * @return \LightSaml\Store\Credential\CompositeCredentialStore
      */

@@ -19,9 +19,6 @@ class CredentialContainer implements CredentialContainerInterface
     /** @var CredentialStoreInterface */
     private $credentialStore;
 
-    /**
-     * @param CredentialStoreInterface $credentialStore
-     */
     public function __construct(CredentialStoreInterface $credentialStore)
     {
         $this->credentialStore = $credentialStore;
