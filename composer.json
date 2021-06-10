@@ -23,7 +23,7 @@
         "symfony/framework-bundle": "^4.4|^5.0",
         "symfony/dependency-injection": "^4.4|^5.0",
         "symfony/yaml": "^4.4|^5.0",
-        "lightsaml2/lightsaml": "dev-master"
+        "lightsaml2/lightsaml": "^2.0"
     },
     "require-dev": {
         "symfony/browser-kit": "^4.4|^5.0",
