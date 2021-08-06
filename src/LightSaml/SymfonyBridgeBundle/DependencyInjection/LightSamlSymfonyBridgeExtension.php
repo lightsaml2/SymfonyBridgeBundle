@@ -54,6 +54,11 @@ class LightSamlSymfonyBridgeExtension extends Extension
         $this->configureStore($container, $config);
         $this->configureCredential($container, $config);
         $this->configureService($container, $config);
+
+        if (isset($config['symfony53']) && $config['symfony53'] === true) {
+            $loader->load('container_53.yml');
+            $loader->load('store_53.yml');
+        }
     }
 
     private function configureCredential(ContainerBuilder $container, array $config)

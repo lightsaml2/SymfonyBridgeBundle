@@ -27,6 +27,9 @@ class Configuration implements ConfigurationInterface
         $root = $treeBuilder->getRootNode();
 
         $root->children()
+            ->booleanNode('symfony53')
+                ->defaultTrue()
+            ->end()
             ->arrayNode('own')
                 ->isRequired()
                 ->children()

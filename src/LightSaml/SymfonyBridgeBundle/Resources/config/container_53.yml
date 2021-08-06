@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    LightSaml\Build\Container\SystemContainerInterface:
+        class: LightSaml\SymfonyBridgeBundle\Bridge\Container\Symfony53SystemContainer
+        arguments:
+            $eventDispatcher: "@lightsaml.system.event_dispatcher"
+            $logger: "@lightsaml.system.logger"
