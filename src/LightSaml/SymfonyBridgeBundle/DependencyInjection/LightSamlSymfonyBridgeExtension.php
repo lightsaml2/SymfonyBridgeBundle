@@ -11,11 +11,13 @@
 
 namespace LightSaml\SymfonyBridgeBundle\DependencyInjection;
 
+use LightSaml\Store\Id\IdStoreInterface;
+use LightSaml\Store\Request\RequestStateStoreInterface;
+use LightSaml\Store\Sso\SsoStateStoreInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -54,11 +56,6 @@ class LightSamlSymfonyBridgeExtension extends Extension
         $this->configureStore($container, $config);
         $this->configureCredential($container, $config);
         $this->configureService($container, $config);
-
-        if (isset($config['symfony53']) && $config['symfony53'] === true) {
-            $loader->load('container_53.yml');
-            $loader->load('store_53.yml');
-        }
     }
 
     private function configureCredential(ContainerBuilder $container, array $config)
@@ -161,18 +158,9 @@ class LightSamlSymfonyBridgeExtension extends Extension
             $store = $container->getDefinition('lightsaml.party.idp_entity_descriptor_store');
             foreach ($config['party']['idp']['files'] as $id => $file) {
                 $id = sprintf('lightsaml.party.idp_entity_descriptor_store.file.%s', $id);
-
-                if (class_exists('Symfony\Component\DependencyInjection\ChildDefinition')) {
-                    // Symfony >= 3.3
-                    $container
-                        ->setDefinition($id, new ChildDefinition('lightsaml.party.idp_entity_descriptor_store.file'))
-                        ->replaceArgument(0, $file);
-                } else {
-                    // Symfony < 3.3
-                    $container
-                        ->setDefinition($id, new DefinitionDecorator('lightsaml.party.idp_entity_descriptor_store.file'))
-                        ->replaceArgument(0, $file);
-                }
+                $container
+                    ->setDefinition($id, new ChildDefinition('lightsaml.party.idp_entity_descriptor_store.file'))
+                    ->replaceArgument(0, $file);
 
                 $store->addMethodCall('add', [new Reference($id)]);
             }
@@ -182,13 +170,13 @@ class LightSamlSymfonyBridgeExtension extends Extension
     private function configureStore(ContainerBuilder $container, array $config)
     {
         if (isset($config['store']['request'])) {
-            $container->setAlias('lightsaml.store.request', $config['store']['request']);
+            $container->setAlias(RequestStateStoreInterface::class, $config['store']['request']);
         }
         if (isset($config['store']['id_state'])) {
-            $container->setAlias('lightsaml.store.id_state', $config['store']['id_state']);
+            $container->setAlias(IdStoreInterface::class, $config['store']['id_state']);
         }
         if (isset($config['store']['sso_state'])) {
-            $container->setAlias('lightsaml.store.sso_state', $config['store']['sso_state']);
+            $container->setAlias(SsoStateStoreInterface::class, $config['store']['sso_state']);
         }
     }
 
