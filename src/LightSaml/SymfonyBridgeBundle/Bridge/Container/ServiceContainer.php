@@ -24,116 +24,47 @@ use LightSaml\Validator\Model\Signature\SignatureValidatorInterface;
 
 class ServiceContainer implements ServiceContainerInterface
 {
-    /** @var AssertionValidatorInterface */
-    private $assertionValidator;
-
-    /** @var AssertionTimeValidatorInterface */
-    private $assertionTimeValidator;
-
-    /** @var SignatureResolverInterface */
-    private $signatureResolver;
-
-    /** @var EndpointResolverInterface */
-    private $endpointResolver;
-
-    /** @var NameIdValidatorInterface */
-    private $nameIdValidator;
-
-    /** @var BindingFactoryInterface */
-    private $bindingFactory;
-
-    /** @var SignatureValidatorInterface */
-    private $signatureValidator;
-
-    /** @var CredentialResolverInterface */
-    private $credentialResolver;
-
-    /** @var SessionProcessorInterface */
-    private $sessionProcessor;
-
     public function __construct(
-        AssertionValidatorInterface $assertionValidator,
-        AssertionTimeValidatorInterface $assertionTimeValidator,
-        SignatureResolverInterface $signatureResolver,
-        EndpointResolverInterface $endpointResolver,
-        NameIdValidatorInterface $nameIdValidator,
-        BindingFactoryInterface $bindingFactory,
-        SignatureValidatorInterface $signatureValidator,
-        CredentialResolverInterface $credentialResolver,
-        SessionProcessorInterface $sessionProcessor
-    ) {
-        $this->assertionValidator = $assertionValidator;
-        $this->assertionTimeValidator = $assertionTimeValidator;
-        $this->signatureResolver = $signatureResolver;
-        $this->endpointResolver = $endpointResolver;
-        $this->nameIdValidator = $nameIdValidator;
-        $this->bindingFactory = $bindingFactory;
-        $this->signatureValidator = $signatureValidator;
-        $this->credentialResolver = $credentialResolver;
-        $this->sessionProcessor = $sessionProcessor;
-    }
+        private readonly AssertionValidatorInterface $assertionValidator,
+        private readonly AssertionTimeValidatorInterface $assertionTimeValidator,
+        private readonly SignatureResolverInterface $signatureResolver,
+        private readonly EndpointResolverInterface $endpointResolver,
+        private readonly NameIdValidatorInterface $nameIdValidator,
+        private readonly BindingFactoryInterface $bindingFactory,
+        private readonly SignatureValidatorInterface $signatureValidator,
+        private readonly CredentialResolverInterface $credentialResolver,
+        private readonly SessionProcessorInterface $sessionProcessor
+    ) { }
 
-    /**
-     * @return AssertionValidatorInterface
-     */
-    public function getAssertionValidator()
-    {
+    public function getAssertionValidator(): AssertionValidatorInterface {
         return $this->assertionValidator;
     }
 
-    /**
-     * @return AssertionTimeValidatorInterface
-     */
-    public function getAssertionTimeValidator()
-    {
+    public function getAssertionTimeValidator(): AssertionTimeValidatorInterface {
         return $this->assertionTimeValidator;
     }
 
-    /**
-     * @return SignatureResolverInterface
-     */
-    public function getSignatureResolver()
-    {
+    public function getSignatureResolver(): SignatureResolverInterface {
         return $this->signatureResolver;
     }
 
-    /**
-     * @return EndpointResolverInterface
-     */
-    public function getEndpointResolver()
-    {
+    public function getEndpointResolver(): EndpointResolverInterface {
         return $this->endpointResolver;
     }
 
-    /**
-     * @return NameIdValidatorInterface
-     */
-    public function getNameIdValidator()
-    {
+    public function getNameIdValidator(): NameIdValidatorInterface {
         return $this->nameIdValidator;
     }
 
-    /**
-     * @return BindingFactoryInterface
-     */
-    public function getBindingFactory()
-    {
+    public function getBindingFactory(): BindingFactoryInterface {
         return $this->bindingFactory;
     }
 
-    /**
-     * @return SignatureValidatorInterface
-     */
-    public function getSignatureValidator()
-    {
+    public function getSignatureValidator(): SignatureValidatorInterface {
         return $this->signatureValidator;
     }
 
-    /**
-     * @return CredentialResolverInterface
-     */
-    public function getCredentialResolver()
-    {
+    public function getCredentialResolver(): CredentialResolverInterface {
         return $this->credentialResolver;
     }
 
@@ -148,8 +79,7 @@ class ServiceContainer implements ServiceContainerInterface
     /**
      * @return SessionProcessorInterface
      */
-    public function getSessionProcessor()
-    {
+    public function getSessionProcessor(): SessionProcessorInterface {
         return $this->sessionProcessor;
     }
 }

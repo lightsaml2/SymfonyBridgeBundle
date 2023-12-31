@@ -21,67 +21,31 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class SystemContainer implements SystemContainerInterface
 {
-    /** @var RequestStack */
-    private $requestStack;
-
-    /** @var TimeProviderInterface */
-    private $timeProvider;
-
-    /** @var EventDispatcherInterface */
-    private $eventDispatcher;
-
-    /** @var LoggerInterface */
-    private $logger;
 
     public function __construct(
-        RequestStack $requestStack,
-        TimeProviderInterface $timeProvider,
-        EventDispatcherInterface $eventDispatcher,
-        LoggerInterface $logger
-    ) {
-        $this->requestStack = $requestStack;
-        $this->timeProvider = $timeProvider;
-        $this->eventDispatcher = $eventDispatcher;
-        $this->logger = $logger;
-    }
+        private readonly RequestStack $requestStack,
+        private readonly TimeProviderInterface $timeProvider,
+        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly LoggerInterface $logger
+    ) { }
 
-    /**
-     * @return Request
-     */
-    public function getRequest()
-    {
+    public function getRequest(): Request {
         return $this->requestStack->getCurrentRequest();
     }
 
-    /**
-     * @return SessionInterface
-     */
-    public function getSession()
-    {
+    public function getSession(): SessionInterface {
         return $this->requestStack->getSession();
     }
 
-    /**
-     * @return TimeProviderInterface
-     */
-    public function getTimeProvider()
-    {
+    public function getTimeProvider(): TimeProviderInterface {
         return $this->timeProvider;
     }
 
-    /**
-     * @return EventDispatcherInterface
-     */
-    public function getEventDispatcher()
-    {
+    public function getEventDispatcher(): EventDispatcherInterface {
         return $this->eventDispatcher;
     }
-
-    /**
-     * @return LoggerInterface
-     */
-    public function getLogger()
-    {
+    
+    public function getLogger(): LoggerInterface {
         return $this->logger;
     }
 }

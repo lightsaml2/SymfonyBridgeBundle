@@ -16,22 +16,9 @@ use LightSaml\Store\Sso\SsoStateStoreInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class Symfony53SsoStateSessionStore implements SsoStateStoreInterface
+class SymfonySsoStateSessionStore implements SsoStateStoreInterface
 {
-    /** @var RequestStack */
-    protected $requestStack;
-
-    /** @var string */
-    protected $key;
-
-    /**
-     * @param string $key
-     */
-    public function __construct(RequestStack $requestStack, $key)
-    {
-        $this->requestStack = $requestStack;
-        $this->key = $key;
-    }
+    public function __construct(private readonly RequestStack $requestStack, private readonly string $key) { }
 
     protected function getSession(): SessionInterface {
         return $this->requestStack->getSession();
@@ -40,8 +27,7 @@ class Symfony53SsoStateSessionStore implements SsoStateStoreInterface
     /**
      * @return SsoState
      */
-    public function get()
-    {
+    public function get(): SsoState {
         $result = $this->getSession()->get($this->key);
         if (null == $result) {
             $result = new SsoState();
@@ -51,11 +37,7 @@ class Symfony53SsoStateSessionStore implements SsoStateStoreInterface
         return $result;
     }
 
-    /**
-     * @return void
-     */
-    public function set(SsoState $ssoState)
-    {
+    public function set(SsoState $ssoState): void {
         $ssoState->setLocalSessionId($this->getSession()->getId());
         $this->getSession()->set($this->key, $ssoState);
     }

@@ -22,98 +22,42 @@ use LightSaml\Build\Container\SystemContainerInterface;
 
 class BuildContainer implements BuildContainerInterface
 {
-    /** @var SystemContainerInterface */
-    private $systemsystemContainer;
-
-    /** @var PartyContainerInterface */
-    private $partypartyContainer;
-
-    /** @var StoreContainerInterface */
-    private $storeContainer;
-
-    /** @var OwnContainerInterface */
-    private $ownContainer;
-
-    /** @var ProviderContainerInterface */
-    private $providerContainer;
-
-    /** @var ServiceContainerInterface */
-    private $serviceContainer;
-
-    /** @var CredentialContainerInterface */
-    private $credentialContainer;
 
     public function __construct(
-        SystemContainerInterface $systemContainer,
-        PartyContainerInterface $partyContainer,
-        StoreContainerInterface $storeContainer,
-        ProviderContainerInterface $providerContainer,
-        CredentialContainerInterface $credentialContainer,
-        ServiceContainerInterface $serviceContainer,
-        OwnContainerInterface $ownContainer
-    ) {
-        $this->systemsystemContainer = $systemContainer;
-        $this->partypartyContainer = $partyContainer;
-        $this->storeContainer = $storeContainer;
-        $this->providerContainer = $providerContainer;
-        $this->credentialContainer = $credentialContainer;
-        $this->serviceContainer = $serviceContainer;
-        $this->ownContainer = $ownContainer;
+        private readonly SystemContainerInterface $systemContainer,
+        private readonly PartyContainerInterface $partyContainer,
+        private readonly StoreContainerInterface $storeContainer,
+        private readonly ProviderContainerInterface $providerContainer,
+        private readonly CredentialContainerInterface $credentialContainer,
+        private readonly ServiceContainerInterface $serviceContainer,
+        private readonly OwnContainerInterface $ownContainer
+    ) {    }
+
+    public function getSystemContainer(): SystemContainerInterface {
+        return $this->systemContainer;
     }
 
-    /**
-     * @return SystemContainerInterface
-     */
-    public function getSystemContainer()
-    {
-        return $this->systemsystemContainer;
+    public function getPartyContainer(): PartyContainerInterface {
+        return $this->partyContainer;
     }
 
-    /**
-     * @return PartyContainerInterface
-     */
-    public function getPartyContainer()
-    {
-        return $this->partypartyContainer;
-    }
-
-    /**
-     * @return StoreContainerInterface
-     */
-    public function getStoreContainer()
-    {
+    public function getStoreContainer(): StoreContainerInterface {
         return $this->storeContainer;
     }
 
-    /**
-     * @return ProviderContainerInterface
-     */
-    public function getProviderContainer()
-    {
+    public function getProviderContainer(): ProviderContainerInterface {
         return $this->providerContainer;
     }
 
-    /**
-     * @return CredentialContainerInterface
-     */
-    public function getCredentialContainer()
-    {
+    public function getCredentialContainer(): CredentialContainerInterface {
         return $this->credentialContainer;
     }
 
-    /**
-     * @return ServiceContainerInterface
-     */
-    public function getServiceContainer()
-    {
+    public function getServiceContainer(): ServiceContainerInterface {
         return $this->serviceContainer;
     }
 
-    /**
-     * @return OwnContainerInterface
-     */
-    public function getOwnContainer()
-    {
+    public function getOwnContainer(): OwnContainerInterface {
         return $this->ownContainer;
     }
 }

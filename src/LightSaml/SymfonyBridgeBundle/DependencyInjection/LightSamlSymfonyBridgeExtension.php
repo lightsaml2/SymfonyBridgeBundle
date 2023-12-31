@@ -27,17 +27,17 @@ class LightSamlSymfonyBridgeExtension extends Extension
     /**
      * Loads a specific configuration.
      *
-     * @param array            $config    An array of configuration values
+     * @param array            $configs    An array of configuration values
      * @param ContainerBuilder $container A ContainerBuilder instance
      *
      * @throws \InvalidArgumentException When provided tag is not defined in this extension
      *
      * @api
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $config);
+        $configs = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('container.yml');
@@ -50,12 +50,12 @@ class LightSamlSymfonyBridgeExtension extends Extension
         $loader->load('provider.yml');
         $loader->load('profile.yml');
 
-        $this->configureOwn($container, $config);
-        $this->configureSystem($container, $config);
-        $this->configureParty($container, $config);
-        $this->configureStore($container, $config);
-        $this->configureCredential($container, $config);
-        $this->configureService($container, $config);
+        $this->configureOwn($container, $configs);
+        $this->configureSystem($container, $configs);
+        $this->configureParty($container, $configs);
+        $this->configureStore($container, $configs);
+        $this->configureCredential($container, $configs);
+        $this->configureService($container, $configs);
     }
 
     private function configureCredential(ContainerBuilder $container, array $config)

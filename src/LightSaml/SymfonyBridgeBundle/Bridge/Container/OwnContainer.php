@@ -18,41 +18,20 @@ use LightSaml\Store\Credential\CredentialStoreInterface;
 
 class OwnContainer implements OwnContainerInterface
 {
-    /** @var EntityDescriptorProviderInterface */
-    private $entityDescriptorProvider;
-
-    /** @var CredentialStoreInterface */
-    private $credentialStore;
-
-    /** @var string */
-    private $entityId;
-
-    /**
-     * @param string $entityId
-     */
     public function __construct(
-        EntityDescriptorProviderInterface $entityDescriptorProvider,
-        CredentialStoreInterface $credentialStore,
-        $entityId
-    ) {
-        $this->entityDescriptorProvider = $entityDescriptorProvider;
-        $this->credentialStore = $credentialStore;
-        $this->entityId = $entityId;
-    }
+        private readonly EntityDescriptorProviderInterface $entityDescriptorProvider,
+        private readonly CredentialStoreInterface $credentialStore,
+        private readonly string $entityId
+    ) { }
 
-    /**
-     * @return EntityDescriptorProviderInterface
-     */
-    public function getOwnEntityDescriptorProvider()
-    {
+    public function getOwnEntityDescriptorProvider(): EntityDescriptorProviderInterface {
         return $this->entityDescriptorProvider;
     }
 
     /**
      * @return CredentialInterface[]
      */
-    public function getOwnCredentials()
-    {
+    public function getOwnCredentials(): array {
         return $this->credentialStore->getByEntityId(
             $this->entityId
         );

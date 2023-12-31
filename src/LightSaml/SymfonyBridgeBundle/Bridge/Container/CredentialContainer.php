@@ -16,19 +16,10 @@ use LightSaml\Store\Credential\CredentialStoreInterface;
 
 class CredentialContainer implements CredentialContainerInterface
 {
-    /** @var CredentialStoreInterface */
-    private $credentialStore;
 
-    public function __construct(CredentialStoreInterface $credentialStore)
-    {
-        $this->credentialStore = $credentialStore;
-    }
-
-    /**
-     * @return CredentialStoreInterface
-     */
-    public function getCredentialStore()
-    {
+    public function __construct(private readonly CredentialStoreInterface $credentialStore) { }
+    
+    public function getCredentialStore(): CredentialStoreInterface {
         return $this->credentialStore;
     }
 }
