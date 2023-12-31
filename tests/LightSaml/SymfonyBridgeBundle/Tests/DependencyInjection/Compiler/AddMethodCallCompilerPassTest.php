@@ -12,7 +12,10 @@ class AddMethodCallCompilerPassTest extends TestCase
 {
     public function test_constructs_with_three_strings()
     {
-        new AddMethodCallCompilerPass('', '', '');
+        $pass = new AddMethodCallCompilerPass('', '', '');
+        $this->assertEquals('', $pass->getServiceId());
+        $this->assertEquals('', $pass->getTagName());
+        $this->assertEquals('', $pass->getMethodName());
     }
 
     public function test_process_does_nothing_if_container_does_not_have_the_service()

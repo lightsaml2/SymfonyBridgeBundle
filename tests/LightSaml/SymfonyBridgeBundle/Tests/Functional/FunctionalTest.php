@@ -44,8 +44,7 @@ class FunctionalTest extends WebTestCase
         $fs->remove(__DIR__.'/cache');
     }
 
-    protected static function getKernelClass()
-    {
+    protected static function getKernelClass(): string {
         return TestKernel::class;
     }
 

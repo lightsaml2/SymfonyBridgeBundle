@@ -12,10 +12,14 @@ class ProviderContainerTest extends TestCase
 {
     public function test_constructs_with_all_arguments()
     {
-        new ProviderContainer(
+        $container = new ProviderContainer(
             $this->getMockBuilder(AttributeValueProviderInterface::class)->getMock(),
             $this->getMockBuilder(SessionInfoProviderInterface::class)->getMock(),
             $this->getMockBuilder(NameIdProviderInterface::class)->getMock()
         );
+
+        $this->assertInstanceOf(AttributeValueProviderInterface::class, $container->getAttributeValueProvider());
+        $this->assertInstanceOf(SessionInfoProviderInterface::class, $container->getSessionInfoProvider());
+        $this->assertInstanceOf(NameIdProviderInterface::class, $container->getNameIdProvider());
     }
 }

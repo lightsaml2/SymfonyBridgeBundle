@@ -10,8 +10,10 @@ class CredentialContainerTest extends TestCase
 {
     public function test_constructs_with_all_arguments()
     {
-        new CredentialContainer(
+        $container = new CredentialContainer(
             $this->getMockBuilder(CredentialStoreInterface::class)->getMock()
         );
+
+        $this->assertInstanceOf(CredentialStoreInterface::class, $container->getCredentialStore());
     }
 }

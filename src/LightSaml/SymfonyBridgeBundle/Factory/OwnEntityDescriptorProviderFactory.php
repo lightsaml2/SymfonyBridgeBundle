@@ -22,8 +22,8 @@ class OwnEntityDescriptorProviderFactory
     public static function build(
         string $ownEntityId,
         RouterInterface $router,
-        string $acsRouteName,
-        string $ssoRouteName,
+        ?string $acsRouteName,
+        ?string $ssoRouteName,
         CredentialStoreInterface $ownCredentialStore
     ): SimpleEntityDescriptorBuilder {
         /** @var X509Credential[] $arrOwnCredentials */

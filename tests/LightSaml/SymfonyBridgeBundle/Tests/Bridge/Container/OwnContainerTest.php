@@ -11,10 +11,12 @@ class OwnContainerTest extends TestCase
 {
     public function test_constructs_with_all_arguments()
     {
-        new OwnContainer(
+        $container = new OwnContainer(
             $this->getMockBuilder(EntityDescriptorProviderInterface::class)->getMock(),
             $this->getMockBuilder(CredentialStoreInterface::class)->getMock(),
             "string"
         );
+
+        $this->assertInstanceOf(EntityDescriptorProviderInterface::class, $container->getOwnEntityDescriptorProvider());
     }
 }

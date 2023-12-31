@@ -11,10 +11,14 @@ class PartyContainerTest extends TestCase
 {
     public function test_constructs_with_all_arguments()
     {
-        new PartyContainer(
+        $container = new PartyContainer(
             $this->getMockBuilder(EntityDescriptorStoreInterface::class)->getMock(),
             $this->getMockBuilder(EntityDescriptorStoreInterface::class)->getMock(),
             $this->getMockBuilder(TrustOptionsStoreInterface::class)->getMock()
         );
+
+        $this->assertInstanceOf(EntityDescriptorStoreInterface::class, $container->getIdpEntityDescriptorStore());
+        $this->assertInstanceOf(EntityDescriptorStoreInterface::class, $container->getSpEntityDescriptorStore());
+        $this->assertInstanceOf(TrustOptionsStoreInterface::class, $container->getTrustOptionsStore());
     }
 }

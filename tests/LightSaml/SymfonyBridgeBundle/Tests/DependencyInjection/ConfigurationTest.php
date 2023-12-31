@@ -10,6 +10,7 @@ class ConfigurationTest extends TestCase
 {
     public function test_passes_with_own_entity_id_only()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -34,6 +35,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_own_entity_descriptor_provider_from_file()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -49,6 +51,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_own_entity_descriptor_provider_from_file_with_entity_id()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -65,6 +68,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_own_entity_descriptor_provider_from_service()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -80,6 +84,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_own_credentials_from_files()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -103,6 +108,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_system_event_dispatcher()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -118,6 +124,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_system_logger()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -133,6 +140,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_store_request()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -148,6 +156,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_store_id_state()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -163,6 +172,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_store_sso_state()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [
@@ -178,6 +188,7 @@ class ConfigurationTest extends TestCase
 
     public function test_allows_party_idp_from_files()
     {
+        $this->expectNotToPerformAssertions();
         $config = [
             'light_saml_symfony_bridge' => [
                 'own' => [

@@ -4,6 +4,10 @@ namespace LightSaml\SymfonyBridgeBundle\Tests\DependencyInjection;
 
 use LightSaml\Build\Container\BuildContainerInterface;
 use LightSaml\Provider\TimeProvider\TimeProviderInterface;
+use LightSaml\Store\Id\IdStoreInterface;
+use LightSaml\Store\Request\RequestStateStoreInterface;
+use LightSaml\Store\Sso\SsoStateStoreInterface;
+use LightSaml\SymfonyBridgeBundle\Bridge\Container\BuildContainer;
 use LightSaml\SymfonyBridgeBundle\DependencyInjection\LightSamlSymfonyBridgeExtension;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -13,6 +17,7 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
 {
     public function test_loads_with_configuration()
     {
+        $this->expectNotToPerformAssertions();
         $containerBuilder = new ContainerBuilder(new ParameterBag());
         $extension = new LightSamlSymfonyBridgeExtension();
         $config = $this->getDefaultConfig();
@@ -28,7 +33,7 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
         $extension->load($config, $containerBuilder);
 
         $this->assertTrue($containerBuilder->hasDefinition(BuildContainerInterface::class));
-        $this->assertEquals('LightSaml\SymfonyBridgeBundle\Bridge\Container\BuildContainer', $containerBuilder->getDefinition(BuildContainerInterface::class)->getClass());
+        $this->assertEquals(BuildContainer::class, $containerBuilder->getDefinition(BuildContainerInterface::class)->getClass());
     }
 
     public function test_set_entity_id_parameter_from_configuration()
@@ -184,7 +189,7 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
 
         $extension->load($config, $containerBuilder);
 
-        $this->assertEquals($expected, (string) $containerBuilder->getAlias('lightsaml.store.request'));
+        $this->assertEquals($expected, (string) $containerBuilder->getAlias(RequestStateStoreInterface::class));
     }
 
     public function test_sets_store_id_state_alias()
@@ -196,7 +201,7 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
 
         $extension->load($config, $containerBuilder);
 
-        $this->assertEquals($expected, (string) $containerBuilder->getAlias('lightsaml.store.id_state'));
+        $this->assertEquals($expected, (string) $containerBuilder->getAlias(IdStoreInterface::class));
     }
 
     public function test_sets_store_sso_state_alias()
@@ -208,7 +213,7 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
 
         $extension->load($config, $containerBuilder);
 
-        $this->assertEquals($expected, (string) $containerBuilder->getAlias('lightsaml.store.sso_state'));
+        $this->assertEquals($expected, (string) $containerBuilder->getAlias(SsoStateStoreInterface::class));
     }
 
     public function test_loads_own_credential_store()
@@ -305,8 +310,7 @@ class LightSamlSymfonyBridgeExtensionTest extends TestCase
         $this->assertTrue($containerBuilder->hasAlias($id));
     }
 
-    private function getDefaultConfig()
-    {
+    private function getDefaultConfig(): array {
         return [
             'light_saml_symfony_bridge' => [
                 'own' => [

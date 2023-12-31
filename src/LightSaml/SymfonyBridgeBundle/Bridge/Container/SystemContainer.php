@@ -44,7 +44,7 @@ class SystemContainer implements SystemContainerInterface
     public function getEventDispatcher(): EventDispatcherInterface {
         return $this->eventDispatcher;
     }
-    
+
     public function getLogger(): LoggerInterface {
         return $this->logger;
     }

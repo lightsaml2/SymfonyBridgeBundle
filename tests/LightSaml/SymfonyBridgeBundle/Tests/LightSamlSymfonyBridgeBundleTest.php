@@ -29,6 +29,7 @@ class LightSamlSymfonyBridgeBundleTest extends TestCase
      */
     public function test_build_adds_own_credential_store_compiler_pass($serviceId, $tagName, $methodName)
     {
+        $this->expectNotToPerformAssertions();
         $bundle = new LightSamlSymfonyBridgeBundle();
 
         $containerBuilder = new ContainerBuilder(new ParameterBag());

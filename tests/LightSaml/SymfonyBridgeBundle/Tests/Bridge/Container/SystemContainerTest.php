@@ -14,12 +14,15 @@ class SystemContainerTest extends TestCase
 {
     public function test_constructs_with_all_arguments()
     {
-        new SystemContainer(
+        $container = new SystemContainer(
             $this->getMockBuilder(RequestStack::class)->getMock(),
-            $this->getMockBuilder(SessionInterface::class)->getMock(),
             $this->getMockBuilder(TimeProviderInterface::class)->getMock(),
             $this->getMockBuilder(EventDispatcherInterface::class)->getMock(),
             $this->getMockBuilder(LoggerInterface::class)->getMock()
         );
+
+        $this->assertInstanceOf(TimeProviderInterface::class, $container->getTimeProvider());
+        $this->assertInstanceOf(EventDispatcherInterface::class, $container->getEventDispatcher());
+        $this->assertInstanceOf(LoggerInterface::class, $container->getLogger());
     }
 }

@@ -12,10 +12,14 @@ class StoreContainerTest extends TestCase
 {
     public function test_constructs_with_all_arguments()
     {
-        new StoreContainer(
+        $container = new StoreContainer(
             $this->getMockBuilder(RequestStateStoreInterface::class)->getMock(),
             $this->getMockBuilder(IdStoreInterface::class)->getMock(),
             $this->getMockBuilder(SsoStateStoreInterface::class)->getMock()
         );
+
+        $this->assertInstanceOf(RequestStateStoreInterface::class, $container->getRequestStateStore());
+        $this->assertInstanceOf(IdStoreInterface::class, $container->getIdStateStore());
+        $this->assertInstanceOf(SsoStateStoreInterface::class, $container->getSsoStateStore());
     }
 }

@@ -16,7 +16,7 @@ class BuildContainerTest extends TestCase
 {
     public function test_constructs_with_all_containers()
     {
-        new BuildContainer(
+        $container = new BuildContainer(
             $this->getMockBuilder(SystemContainerInterface::class)->getMock(),
             $this->getMockBuilder(PartyContainerInterface::class)->getMock(),
             $this->getMockBuilder(StoreContainerInterface::class)->getMock(),
@@ -25,5 +25,13 @@ class BuildContainerTest extends TestCase
             $this->getMockBuilder(ServiceContainerInterface::class)->getMock(),
             $this->getMockBuilder(OwnContainerInterface::class)->getMock()
         );
+
+        $this->assertInstanceOf(SystemContainerInterface::class, $container->getSystemContainer());
+        $this->assertInstanceOf(PartyContainerInterface::class, $container->getPartyContainer());
+        $this->assertInstanceOf(StoreContainerInterface::class, $container->getStoreContainer());
+        $this->assertInstanceOf(ProviderContainerInterface::class, $container->getProviderContainer());
+        $this->assertInstanceOf(CredentialContainerInterface::class, $container->getCredentialContainer());
+        $this->assertInstanceOf(ServiceContainerInterface::class, $container->getServiceContainer());
+        $this->assertInstanceOf(OwnContainerInterface::class, $container->getOwnContainer());
     }
 }
