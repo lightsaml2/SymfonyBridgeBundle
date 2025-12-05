@@ -15,12 +15,14 @@ use LightSaml\Binding\BindingFactoryInterface;
 use LightSaml\Build\Container\ServiceContainerInterface;
 use LightSaml\Resolver\Credential\CredentialResolverInterface;
 use LightSaml\Resolver\Endpoint\EndpointResolverInterface;
+use LightSaml\Resolver\Logout\LogoutSessionResolverInterface;
 use LightSaml\Resolver\Session\SessionProcessorInterface;
 use LightSaml\Resolver\Signature\SignatureResolverInterface;
 use LightSaml\Validator\Model\Assertion\AssertionTimeValidatorInterface;
 use LightSaml\Validator\Model\Assertion\AssertionValidatorInterface;
 use LightSaml\Validator\Model\NameId\NameIdValidatorInterface;
 use LightSaml\Validator\Model\Signature\SignatureValidatorInterface;
+use LogicException;
 
 class ServiceContainer implements ServiceContainerInterface
 {
@@ -69,11 +71,10 @@ class ServiceContainer implements ServiceContainerInterface
     }
 
     /**
-     * @return \LightSaml\Resolver\Logout\LogoutSessionResolverInterface
+     * @return LogoutSessionResolverInterface
      */
-    public function getLogoutSessionResolver()
-    {
-        throw new \LogicException('Not implemented');
+    public function getLogoutSessionResolver(): LogoutSessionResolverInterface {
+        throw new LogicException('Not implemented');
     }
 
     /**
